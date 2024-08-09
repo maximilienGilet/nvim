@@ -1,8 +1,10 @@
 return {
-  { "catppuccin/nvim" },
-  lazy = false,
-  name = "catppuccin",
-
+  {
+    "catppuccin",
+    opts = {
+      transparent_background = true,
+    },
+  },
   {
     "LazyVim/LazyVim",
     opts = {
