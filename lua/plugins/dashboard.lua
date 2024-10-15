@@ -2,16 +2,14 @@ return {
   "nvimdev/dashboard-nvim",
   event = "VimEnter",
   opts = function()
-    local logo = [[
-	  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-	  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-	  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-	  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-	  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-	  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-    ]]
+    local headers = require("ascii")
+    local headerKeys = {}
+    for key, _ in pairs(headers) do
+      table.insert(headerKeys, key)
+    end
+    local randomHeader = headerKeys[math.random(#headerKeys)]
 
-    logo = string.rep("\n", 8) .. logo .. "\n\n"
+    local logo = string.rep("\n", 8) .. table.concat(headers[randomHeader], "\n") .. "\n\n"
 
     local opts = {
       theme = "doom",
